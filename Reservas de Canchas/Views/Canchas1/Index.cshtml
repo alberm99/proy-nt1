@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Reservas_de_Canchas.Models.Cancha>
+
+@{
+    ViewData["Title"] = "Nuestras Canchas";
+}
+
+<h1>Nuestras Canchas</h1>
+
+<p>
+    <a asp-action="Create">Crear nueva cancha</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCancha)
+            </th>
+            <th>
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Habilitada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Importe)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCancha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Habilitada)
+            </td>
+            <td>
+                @if (item.Habilitada)
+                {
+                    <p>Habilitada</p>
+                }
+                else
+                {
+                    <p>Deshabilitada</p>
+                }
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Importe)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.NroCancha">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.NroCancha">Detalles</a> |
+                @*<a asp-action="Delete" asp-route-id="@item.NroCancha">Eliminar</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

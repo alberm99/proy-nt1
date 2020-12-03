@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Reservas_de_Canchas.Models.Turno>
+
+@{
+    ViewData["Title"] = "Mis turnos";
+
+
+}
+@{
+    var aux = ViewBag.EmailUsuario;
+
+}
+
+<h1>@aux</h1>
+
+<h3>Mis turnos</h3>
+
+<p>
+    @*<a asp-action="Create">Create New</a>*@
+    @Html.ActionLink("Reservar cancha", "Create", "Usuarios1")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaHora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailClienteNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NroCanchaNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaHora)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailClienteNavigation.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NroCanchaNavigation.NombreCancha)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.NroTurno">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.NroTurno">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.NroTurno">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

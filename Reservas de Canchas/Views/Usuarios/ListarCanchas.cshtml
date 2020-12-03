@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Reservas_de_Canchas.Models.Cancha>
+<
+<select id="NroCancha" name="NroCancha" class="form-control">
+    @foreach (var item in Model)
+    {
+        <option value="@item.NroCancha">"@item.NombreCancha"</option>
+    }
+</select>
+
+
+
+
+@*@model IEnumerable<Reservas_de_Canchas.Models.Turno>
+
+@{
+    ViewData["Title"] = "Mis turnos";
+}
+
+<h1>Mis turnos</h1>
+
+<p>
+    @Html.ActionLink("Reservar Cancha", "Reservar");
+    <a asp-action="Reservar">Reservar cancha</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaHora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailClienteNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NroCanchaNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaHora)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailClienteNavigation.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NroCanchaNavigation.NombreCancha)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.NroTurno">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.NroTurno">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.NroTurno">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>*@

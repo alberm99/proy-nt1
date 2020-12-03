@@ -1,0 +1,47 @@
+﻿
+
+@model Reservas_de_Canchas.Models.Turno
+
+@{
+    ViewData["Title"] = "Reserva de cancha";
+}
+
+<h1>Reservar</h1>
+
+<h4>Turno</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<input type="hidden" asp-for="EmailCliente" />*@
+            <div class="form-group">
+                <label asp-for="EmailCliente" class="control-label"></label>
+                <select asp-for="EmailCliente" class ="form-control" asp-items="ViewBag.EmailCliente"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="NroCancha" class="control-label"></label>
+                <select asp-for="NroCancha" class="form-control" asp-items="ViewBag.NroCancha"></select>
+                <span asp-validation-for="NroCancha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaHora" class="control-label"></label>
+                <input asp-for="FechaHora" class="form-control" />
+                <span asp-validation-for="FechaHora" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Reservar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    
+       @*@Html.ActionLink("Regresar", "Index", "Usuarios1", new { ViewBag.EmailUsuario } )*@    
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

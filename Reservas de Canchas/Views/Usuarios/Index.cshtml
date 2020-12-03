@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Reservas_de_Canchas.Models.Turno>
+
+    @{
+        ViewData["Title"] = "Mis turnos";
+    }
+
+    <h1>Mis turnos</h1>
+
+    <p>
+        @Html.ActionLink("Reservar Cancha", "Reservar")
+        @*<a asp-action="Reservar">Reservar cancha</a>*@
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaHora)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmailClienteNavigation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NroCanchaNavigation)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaHora)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmailClienteNavigation.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NroCanchaNavigation.NombreCancha)
+                    </td>
+                    <td>
+
+
+                        @Html.ActionLink("Editar", "Edit", new { NroTurno = item.NroTurno }) |
+                        @Html.ActionLink("Detalles", "Detalles", new { NroTurno = item.NroTurno }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { NroTurno = item.NroTurno }) 
+
+
+                        @*<a asp-action="Edit" asp-route-id="@item.NroTurno">Editar</a> |
+                        <a asp-action="Detalles" asp-route-id="@item.NroTurno">Detalles</a> |
+                        <a asp-action="Delete" asp-route-id="@item.NroTurno">Eliminar</a>*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
